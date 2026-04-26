@@ -1,0 +1,347 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────────
+   CSS CUSTOM PROPERTIES — Design Tokens
+───────────────────────────────────────────── */
+@layer base {
+  :root {
+    /* Brand */
+    --green-primary:   #16a34a;
+    --green-light:     #22c55e;
+    --green-dark:      #15803d;
+    --green-50:        #f0fdf4;
+    --amber:           #f59e0b;
+    --amber-dark:      #d97706;
+
+    /* Surfaces */
+    --bg:              #ffffff;
+    --bg-secondary:    #f8fafc;
+    --bg-tertiary:     #f1f5f9;
+    --surface:         #ffffff;
+    --surface-elevated:#ffffff;
+
+    /* Borders */
+    --border:          #e2e8f0;
+    --border-strong:   #cbd5e1;
+
+    /* Text */
+    --text:            #0f172a;
+    --text-secondary:  #475569;
+    --text-muted:      #94a3b8;
+    --text-inverse:    #ffffff;
+
+    /* Feedback */
+    --success:         #16a34a;
+    --warning:         #f59e0b;
+    --error:           #dc2626;
+    --info:            #2563eb;
+
+    /* Shadows */
+    --shadow-sm:       0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow:          0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-md:       0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg:       0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+    /* Radius */
+    --radius-sm:       0.5rem;
+    --radius:          0.75rem;
+    --radius-lg:       1rem;
+    --radius-xl:       1.5rem;
+    --radius-full:     9999px;
+
+    /* Transition */
+    --transition:      150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Bottom nav height */
+    --bottom-nav-h:    4rem;
+  }
+
+  /* ── Dark Mode ── */
+  .dark {
+    --bg:              #09090b;
+    --bg-secondary:    #111827;
+    --bg-tertiary:     #1f2937;
+    --surface:         #111827;
+    --surface-elevated:#1f2937;
+
+    --border:          #1f2937;
+    --border-strong:   #374151;
+
+    --text:            #f9fafb;
+    --text-secondary:  #9ca3af;
+    --text-muted:      #6b7280;
+    --text-inverse:    #0f172a;
+
+    --shadow-sm:       0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --shadow:          0 1px 3px 0 rgb(0 0 0 / 0.4), 0 1px 2px -1px rgb(0 0 0 / 0.4);
+    --shadow-md:       0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+    --shadow-lg:       0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+  }
+}
+
+/* ─────────────────────────────────────────────
+   BASE RESETS & DEFAULTS
+───────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* prevent horizontal scroll */
+    overflow-x: hidden;
+    /* push content above bottom nav on mobile */
+    padding-bottom: var(--bottom-nav-h);
+  }
+
+  /* Bengali font class */
+  .font-bengali,
+  [lang="bn"] {
+    font-family: var(--font-hind), system-ui, sans-serif;
+  }
+
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text);
+  }
+
+  /* Links */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Images */
+  img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Focus ring — accessible but clean */
+  :focus-visible {
+    outline: 2px solid var(--green-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Remove scrollbar in WebKit (keep functional) */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+  /* Selection */
+  ::selection {
+    background: rgb(22 163 74 / 0.2);
+    color: var(--text);
+  }
+
+  /* Remove body padding on desktop (no bottom nav) */
+  @media (min-width: 1024px) {
+    body { padding-bottom: 0; }
+  }
+}
+
+/* ─────────────────────────────────────────────
+   COMPONENT UTILITIES
+───────────────────────────────────────────── */
+@layer components {
+  /* Container */
+  .container-app {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section spacing */
+  .section {
+    @apply py-10 sm:py-14 lg:py-20;
+  }
+
+  /* Card */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition), border-color var(--transition);
+  }
+  .card:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Input base */
+  .input-base {
+    @apply w-full rounded-xl border bg-white dark:bg-gray-900 px-4 py-3 text-sm
+           text-slate-900 dark:text-white placeholder:text-slate-400
+           border-slate-200 dark:border-slate-700
+           focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-500
+           transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold;
+  }
+
+  /* Skeleton loader */
+  .skeleton {
+    @apply animate-pulse rounded-lg bg-slate-200 dark:bg-slate-800;
+  }
+
+  /* Green gradient button */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl
+           bg-green-600 hover:bg-green-700 active:bg-green-800
+           px-5 py-3 text-sm font-semibold text-white
+           transition-all duration-150 shadow-sm hover:shadow
+           disabled:opacity-50 disabled:cursor-not-allowed
+           focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl
+           border border-slate-200 dark:border-slate-700
+           bg-white dark:bg-slate-900
+           hover:bg-slate-50 dark:hover:bg-slate-800
+           px-5 py-3 text-sm font-semibold text-slate-700 dark:text-slate-300
+           transition-all duration-150
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl
+           px-4 py-2.5 text-sm font-medium text-slate-600 dark:text-slate-400
+           hover:bg-slate-100 dark:hover:bg-slate-800
+           transition-all duration-150;
+  }
+
+  /* Product card */
+  .product-card {
+    @apply card rounded-2xl overflow-hidden hover:border-green-200 dark:hover:border-green-800/50
+           group cursor-pointer;
+  }
+
+  /* Green text link */
+  .link-green {
+    @apply text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300
+           font-medium transition-colors;
+  }
+
+  /* Section title */
+  .section-title {
+    @apply text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white;
+  }
+
+  /* Divider */
+  .divider {
+    @apply border-t border-slate-200 dark:border-slate-800;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   UTILITIES
+───────────────────────────────────────────── */
+@layer utilities {
+  /* Text gradients */
+  .text-gradient-green {
+    @apply bg-gradient-to-r from-green-600 to-green-400 bg-clip-text text-transparent;
+  }
+
+  /* Glass morphism */
+  .glass {
+    backdrop-filter: blur(12px) saturate(180%);
+    background: rgb(255 255 255 / 0.85);
+  }
+  .dark .glass {
+    background: rgb(9 9 11 / 0.85);
+  }
+
+  /* Scrollable X without scrollbar */
+  .scroll-x-hidden {
+    @apply overflow-x-auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scroll-x-hidden::-webkit-scrollbar { display: none; }
+
+  /* Clamp lines */
+  .line-clamp-1 { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; }
+  .line-clamp-2 { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  .line-clamp-3 { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+
+  /* Safe area padding (mobile notch) */
+  .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+  .pt-safe { padding-top: env(safe-area-inset-top); }
+}
+
+/* ─────────────────────────────────────────────
+   PAGE TRANSITIONS
+───────────────────────────────────────────── */
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-enter {
+  animation: page-enter 0.25s ease-out forwards;
+}
+
+/* ─────────────────────────────────────────────
+   BOTTOM NAV
+───────────────────────────────────────────── */
+.bottom-nav {
+  height: var(--bottom-nav-h);
+}
+
+/* ─────────────────────────────────────────────
+   CHAT INTERFACE (AI Assistant)
+───────────────────────────────────────────── */
+.chat-bubble-user {
+  @apply bg-green-600 text-white rounded-2xl rounded-br-sm px-4 py-3 max-w-[85%] ml-auto;
+}
+.chat-bubble-ai {
+  @apply bg-white dark:bg-gray-900 border border-slate-200 dark:border-slate-700
+         text-slate-800 dark:text-slate-200
+         rounded-2xl rounded-bl-sm px-4 py-3 max-w-[85%];
+}
+
+/* ─────────────────────────────────────────────
+   PROSE (blog / forum content)
+───────────────────────────────────────────── */
+.prose-agro {
+  @apply text-slate-700 dark:text-slate-300 leading-relaxed;
+}
+.prose-agro h2 { @apply text-xl font-bold text-slate-900 dark:text-white mt-6 mb-3; }
+.prose-agro h3 { @apply text-lg font-semibold text-slate-900 dark:text-white mt-5 mb-2; }
+.prose-agro p  { @apply mb-4; }
+.prose-agro ul { @apply list-disc list-inside mb-4 space-y-1; }
+.prose-agro ol { @apply list-decimal list-inside mb-4 space-y-1; }
+.prose-agro a  { @apply text-green-600 dark:text-green-400 underline; }
+.prose-agro strong { @apply font-semibold text-slate-900 dark:text-white; }
+.prose-agro blockquote {
+  @apply border-l-4 border-green-500 pl-4 py-1 my-4 italic text-slate-600 dark:text-slate-400;
+}
