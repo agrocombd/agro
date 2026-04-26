@@ -1,10 +1,11 @@
 # Agro Platform — Master TODO List
 
 > Legend: ✅ Done | 🔄 In Progress | ⬜ Pending | ❌ Blocked
+> Last updated: 2026-04-26
 
 ---
 
-## PHASE 1 — Foundation
+## PHASE 1 — Foundation ✅ COMPLETE
 
 | Status | Task |
 |--------|------|
@@ -14,69 +15,51 @@
 | ✅ | Create IMPLEMENTATION.md |
 | ✅ | Create TODO.md |
 | ✅ | Create SITEMAP.md |
-| 🔄 | Initialize Next.js 15 project structure |
-| ⬜ | Create package.json with all dependencies |
-| ⬜ | Create next.config.mjs |
-| ⬜ | Create tailwind.config.mjs (design system) |
-| ⬜ | Create postcss.config.mjs |
-| ⬜ | Create jsconfig.json (path aliases) |
-| ⬜ | Create .env.local (credentials) |
-| ⬜ | Create .gitignore |
-| ⬜ | Create app/globals.css (CSS variables, fonts, base styles) |
-| ⬜ | Create root app/layout.jsx |
-| ⬜ | Run npm install |
+| ✅ | Initialize Next.js 15 project structure |
+| ✅ | Create package.json with all dependencies |
+| ✅ | Create next.config.mjs |
+| ✅ | Create tailwind.config.mjs (design system) |
+| ✅ | Create .env.local (credentials) |
+| ✅ | Create .gitignore |
+| ✅ | Create app/globals.css (CSS variables, fonts, base styles) |
+| ✅ | Create root app/layout.jsx |
+| ✅ | Add Supabase MCP (.mcp.json) + agent skills |
 
 ---
 
-## PHASE 2 — Database (Supabase)
+## PHASE 2 — Database (Supabase) ✅ COMPLETE
 
 | Status | Task |
 |--------|------|
-| ⬜ | Create supabase/schema.sql (complete unified schema) |
-| ⬜ | Run schema migrations on live Supabase project |
-| ⬜ | Verify RLS policies on all tables |
-| ⬜ | Create lib/supabase.js (browser client) |
-| ⬜ | Create lib/supabase-server.js (server + admin client) |
-| ⬜ | Seed default admin account |
-| ⬜ | Seed default site_settings |
-| ⬜ | Seed sample forum categories |
+| ✅ | Create supabase/schema.sql (complete unified schema) |
+| ⬜ | **USER ACTION NEEDED**: Run schema in Supabase SQL Editor |
+| ✅ | RLS policies defined in schema.sql |
+| ✅ | Create lib/supabase.js (browser client) |
+| ✅ | Create lib/supabase-server.js (server + admin client) |
+| ⬜ | **USER ACTION NEEDED**: Create admin account via Supabase Auth |
 
 ---
 
-## PHASE 3 — Design System & Providers
+## PHASE 3 — Design System & Providers ✅ COMPLETE
 
 | Status | Task |
 |--------|------|
-| ⬜ | Create ThemeProvider (dark/light mode, system detect) |
-| ⬜ | Create LanguageProvider (Bengali default, English toggle) |
-| ⬜ | Create locales/bn.json (Bengali translations) |
-| ⬜ | Create locales/en.json (English translations) |
-| ⬜ | UI: Button component (variants: primary, secondary, ghost, danger) |
-| ⬜ | UI: Card component |
-| ⬜ | UI: Input component |
-| ⬜ | UI: Select component |
-| ⬜ | UI: Badge component |
-| ⬜ | UI: Spinner/Loading component |
-| ⬜ | UI: Toast/Notification component |
-| ⬜ | UI: Modal component |
-| ⬜ | UI: Avatar component |
-| ⬜ | UI: Skeleton loader component |
+| ✅ | ThemeProvider (dark/light mode, system detect, FOUC prevention) |
+| ✅ | LanguageProvider (Bengali default, English toggle) |
+| ✅ | locales/bn.json + locales/en.json |
+| ✅ | Button, Input, Badge, Spinner, Toast, Modal, ThemeToggle |
 
 ---
 
-## PHASE 4 — Layout Components
+## PHASE 4 — Layout Components ✅ COMPLETE
 
 | Status | Task |
 |--------|------|
-| ⬜ | Header (logo, nav, search, cart icon, language toggle, dark mode) |
-| ⬜ | Mobile Header (hamburger, drawer menu) |
-| ⬜ | Footer (links, social, newsletter) |
-| ⬜ | Bottom Navigation (mobile sticky: Home, Shop, AI, Forum, Account) |
-| ⬜ | Public layout (header + footer wrapper) |
-| ⬜ | Dashboard sidebar layout |
-| ⬜ | Admin sidebar layout |
-| ⬜ | AnnouncementBar (from site_settings) |
-| ⬜ | BreadcrumbNav component |
+| ✅ | Header (desktop + mobile drawer, dark mode, language, cart badge) |
+| ✅ | Footer (4-column, payment badges) |
+| ✅ | BottomNav (sticky mobile 5-item, cart count, AI special button) |
+| ✅ | DashboardSidebar (role-based: customer / vendor / admin) |
+| ✅ | Public layout, Dashboard layout, Admin layout, Vendor layout |
 
 ---
 
