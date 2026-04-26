@@ -240,10 +240,10 @@
            transition-all duration-150;
   }
 
-  /* Product card */
+  /* Product card — group class added directly in JSX, cannot use in @apply */
   .product-card {
     @apply card rounded-2xl overflow-hidden hover:border-green-200 dark:hover:border-green-800/50
-           group cursor-pointer;
+           cursor-pointer;
   }
 
   /* Green text link */

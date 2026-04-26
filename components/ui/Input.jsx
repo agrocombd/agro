@@ -2,7 +2,7 @@
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 
-export default function Input({
+export function Input({
   label,
   error,
   hint,
@@ -107,3 +107,5 @@ export function Select({ label, error, children, className, containerClassName, 
     </div>
   );
 }
+
+export default Input;

@@ -17,7 +17,7 @@ const sizes = {
   icon: "p-2.5 rounded-xl",
 };
 
-export default function Button({
+export function Button({
   children,
   variant = "primary",
   size = "md",
@@ -55,3 +55,5 @@ export default function Button({
     </button>
   );
 }
+
+export default Button;

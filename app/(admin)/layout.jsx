@@ -1,4 +1,5 @@
 import { createServerSupabaseClient } from "@/lib/supabase-server";
+export const dynamic = "force-dynamic";
 import { redirect } from "next/navigation";
 import Header from "@/components/layout/Header";
 import { ToastProvider } from "@/components/ui/Toast";

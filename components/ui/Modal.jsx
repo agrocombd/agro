@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { cn } from "@/lib/utils";
 
-export default function Modal({ open, onClose, title, children, size = "md", className }) {
+export function Modal({ open, onClose, title, children, size = "md", className }) {
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
@@ -89,3 +89,5 @@ export function ConfirmModal({ open, onClose, onConfirm, title, message, confirm
     </Modal>
   );
 }
+
+export default Modal;

@@ -120,7 +120,7 @@ export default function CategoriesPage() {
       )}
 
       {/* Add/Edit Modal */}
-      <Modal isOpen={showModal} onClose={() => setShowModal(false)} title={editId ? "বিভাগ সম্পাদনা" : "নতুন বিভাগ"}>
+      <Modal open={showModal} onClose={() => setShowModal(false)} title={editId ? "বিভাগ সম্পাদনা" : "নতুন বিভাগ"}>
         <div className="space-y-3">
           <Input label="নাম (বাংলা)" value={form.name_bn} onChange={e => setForm(f => ({ ...f, name_bn: e.target.value }))} required />
           <Input label="নাম (ইংরেজি)" value={form.name_en} onChange={e => setForm(f => ({ ...f, name_en: e.target.value }))} />
@@ -145,11 +145,11 @@ export default function CategoriesPage() {
       </Modal>
 
       <ConfirmModal
-        isOpen={!!showDelete}
+        open={!!showDelete}
         onClose={() => setShowDelete(null)}
         onConfirm={() => handleDelete(showDelete)}
         title="বিভাগ মুছে ফেলবেন?"
-        description="এই বিভাগের সব পণ্য প্রভাবিত হতে পারে।"
+        message="এই বিভাগের সব পণ্য প্রভাবিত হতে পারে।"
       />
     </div>
   );

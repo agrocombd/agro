@@ -157,7 +157,7 @@ export default function ForumAdminPage() {
       )}
 
       {/* Category Modal */}
-      <Modal isOpen={showCatModal} onClose={() => setShowCatModal(false)} title={editId ? "বিভাগ সম্পাদনা" : "নতুন ফোরাম বিভাগ"}>
+      <Modal open={showCatModal} onClose={() => setShowCatModal(false)} title={editId ? "বিভাগ সম্পাদনা" : "নতুন ফোরাম বিভাগ"}>
         <div className="space-y-3">
           <Input label="নাম (বাংলা)" value={catForm.name_bn} onChange={e => setCatForm(f => ({ ...f, name_bn: e.target.value }))} required />
           <Input label="নাম (ইংরেজি)" value={catForm.name_en} onChange={e => setCatForm(f => ({ ...f, name_en: e.target.value }))} />
@@ -180,7 +180,7 @@ export default function ForumAdminPage() {
       </Modal>
 
       {/* Notice Modal */}
-      <Modal isOpen={showNoticeModal} onClose={() => setShowNoticeModal(false)} title={editId ? "নোটিশ সম্পাদনা" : "নতুন নোটিশ"}>
+      <Modal open={showNoticeModal} onClose={() => setShowNoticeModal(false)} title={editId ? "নোটিশ সম্পাদনা" : "নতুন নোটিশ"}>
         <div className="space-y-3">
           <Input label="শিরোনাম" value={noticeForm.title} onChange={e => setNoticeForm(f => ({ ...f, title: e.target.value }))} required />
           <div>
@@ -199,11 +199,11 @@ export default function ForumAdminPage() {
       </Modal>
 
       <ConfirmModal
-        isOpen={!!showDelete}
+        open={!!showDelete}
         onClose={() => setShowDelete(null)}
         onConfirm={() => showDelete && deleteItem(showDelete.table, showDelete.id)}
         title="মুছে ফেলবেন?"
-        description="এই অ্যাকশন পূর্বাবস্থায় ফেরানো যাবে না।"
+        message="এই অ্যাকশন পূর্বাবস্থায় ফেরানো যাবে না।"
       />
     </div>
   );

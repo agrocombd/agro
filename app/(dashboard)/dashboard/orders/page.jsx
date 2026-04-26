@@ -1,4 +1,5 @@
 import { createServerSupabaseClient, createAdminClient } from "@/lib/supabase-server";
+export const dynamic = "force-dynamic";
 import Link from "next/link";
 import { formatPrice, timeAgo } from "@/lib/utils";
 
