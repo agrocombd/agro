@@ -10,7 +10,7 @@ create extension if not exists "pg_trgm";
 -- ENUMS
 -- ============================================================
 do $$ begin
-  create type user_role as enum ('admin','manager','retail_vendor','b2b_vendor','customer','affiliate');
+  -- role is stored as text (no enum) for GoTrue compatibility
 exception when duplicate_object then null; end $$;
 
 do $$ begin
@@ -65,10 +65,10 @@ create policy "Public can view basic profile info"  on profiles for select using
 create or replace function handle_new_user()
 returns trigger language plpgsql security definer set search_path = public as $$
 declare
-  v_role user_role := 'customer';
+  v_role text := 'customer';
 begin
   if new.raw_user_meta_data->>'role' is not null then
-    v_role := (new.raw_user_meta_data->>'role')::user_role;
+    v_role := new.raw_user_meta_data->>'role';
   end if;
   insert into profiles (id, email, phone, full_name, role, preferred_language)
   values (
