@@ -3,5 +3,29 @@
   "buildCommand": "npm run build",
   "devCommand": "npm run dev",
   "installCommand": "npm install",
-  "outputDirectory": ".next"
+  "outputDirectory": ".next",
+  "env": {
+    "NEXT_PUBLIC_SUPABASE_URL": "https://ejdloezkivgvgsfdqpwc.supabase.co",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVqZGxvZXpraXZndmdzZmRxcHdjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5MjY5OTQsImV4cCI6MjA5MjUwMjk5NH0.NqulpdSDzeaPuYsypkN4VtEbSMS4indSH5WoMKHZbQw",
+    "GEMINI_MODEL": "gemini-2.5-flash-latest",
+    "RATE_LIMIT_GUEST": "5",
+    "RATE_LIMIT_HOURLY": "15",
+    "RATE_LIMIT_DAILY": "100",
+    "DAILY_TOTAL_LIMIT": "500",
+    "NEXT_PUBLIC_SITE_URL": "https://agro-com-bd.vercel.app",
+    "NEXT_PUBLIC_SITE_NAME": "agro.com.bd"
+  },
+  "build": {
+    "env": {
+      "NEXT_PUBLIC_SUPABASE_URL": "https://ejdloezkivgvgsfdqpwc.supabase.co",
+      "NEXT_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVqZGxvZXpraXZndmdzZmRxcHdjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5MjY5OTQsImV4cCI6MjA5MjUwMjk5NH0.NqulpdSDzeaPuYsypkN4VtEbSMS4indSH5WoMKHZbQw",
+      "GEMINI_MODEL": "gemini-2.5-flash-latest",
+      "RATE_LIMIT_GUEST": "5",
+      "RATE_LIMIT_HOURLY": "15",
+      "RATE_LIMIT_DAILY": "100",
+      "DAILY_TOTAL_LIMIT": "500",
+      "NEXT_PUBLIC_SITE_URL": "https://agro-com-bd.vercel.app",
+      "NEXT_PUBLIC_SITE_NAME": "agro.com.bd"
+    }
+  }
 }
