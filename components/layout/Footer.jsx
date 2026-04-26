@@ -4,8 +4,8 @@ import Image from "next/image";
 const SHOP_LINKS = [
   { label: "শপ", href: "/shop" },
   { label: "পাইকারি", href: "/b2b" },
-  { label: "বিক্রেতা হোন", href: "/auth/signup/vendor" },
-  { label: "অ্যাফিলিয়েট", href: "/auth/signup" },
+  { label: "বিক্রেতা হোন", href: "/signup/vendor" },
+  { label: "অ্যাফিলিয়েট", href: "/signup" },
 ];
 const INFO_LINKS = [
   { label: "আমাদের সম্পর্কে", href: "/about" },

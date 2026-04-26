@@ -69,7 +69,7 @@ export default async function HomePage() {
                 <Link href="/shop" className="btn-primary px-7 py-3.5 text-base font-bold shadow-lg shadow-green-900/50 hover:shadow-green-900/70">
                   এখনই কিনুন →
                 </Link>
-                <Link href="/auth/signup/vendor" className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 hover:bg-white/20 px-7 py-3.5 text-base font-bold text-white transition-all">
+                <Link href="/signup/vendor" className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 hover:bg-white/20 px-7 py-3.5 text-base font-bold text-white transition-all">
                   বিক্রেতা হোন
                 </Link>
               </div>
@@ -212,7 +212,7 @@ export default async function HomePage() {
                 <Link href="/b2b" className="btn-amber inline-flex items-center gap-2 rounded-xl bg-amber-500 hover:bg-amber-600 px-6 py-3 text-sm font-bold text-white transition-all">
                   পাইকারি মার্কেট দেখুন →
                 </Link>
-                <Link href="/auth/signup/b2b-vendor" className="inline-flex items-center gap-2 rounded-xl border border-slate-700 hover:border-amber-500/50 px-6 py-3 text-sm font-medium text-slate-300 transition-all">
+                <Link href="/signup/b2b-vendor" className="inline-flex items-center gap-2 rounded-xl border border-slate-700 hover:border-amber-500/50 px-6 py-3 text-sm font-medium text-slate-300 transition-all">
                   পাইকারি বিক্রেতা হোন
                 </Link>
               </div>
@@ -328,10 +328,10 @@ export default async function HomePage() {
             লক্ষ লক্ষ ক্রেতার কাছে আপনার পণ্য পৌঁছে দিন। সহজ নিবন্ধন, দ্রুত অনুমোদন।
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
-            <Link href="/auth/signup/vendor" className="inline-flex items-center gap-2 rounded-xl bg-white text-green-700 hover:bg-green-50 px-7 py-3.5 text-sm font-bold transition-all shadow-md">
+            <Link href="/signup/vendor" className="inline-flex items-center gap-2 rounded-xl bg-white text-green-700 hover:bg-green-50 px-7 py-3.5 text-sm font-bold transition-all shadow-md">
               খুচরা বিক্রেতা হোন
             </Link>
-            <Link href="/auth/signup/b2b-vendor" className="inline-flex items-center gap-2 rounded-xl border-2 border-white/40 hover:border-white/70 hover:bg-white/10 px-7 py-3.5 text-sm font-bold text-white transition-all">
+            <Link href="/signup/b2b-vendor" className="inline-flex items-center gap-2 rounded-xl border-2 border-white/40 hover:border-white/70 hover:bg-white/10 px-7 py-3.5 text-sm font-bold text-white transition-all">
               পাইকারি বিক্রেতা হোন
             </Link>
           </div>

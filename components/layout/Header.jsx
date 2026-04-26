@@ -187,7 +187,7 @@ export default function Header() {
               </Link>
             ) : (
               <Link
-                href="/auth/login"
+                href="/login"
                 className="hidden sm:inline-flex btn-primary py-2 px-4 text-xs"
               >
                 {t("nav.login")}
@@ -295,10 +295,10 @@ export default function Header() {
                 </>
               ) : (
                 <>
-                  <Link href="/auth/login" className="btn-primary w-full text-center py-3 text-sm">
+                  <Link href="/login" className="btn-primary w-full text-center py-3 text-sm">
                     {t("nav.login")}
                   </Link>
-                  <Link href="/auth/signup" className="btn-secondary w-full text-center py-3 text-sm">
+                  <Link href="/signup" className="btn-secondary w-full text-center py-3 text-sm">
                     {t("nav.signup")}
                   </Link>
                 </>
