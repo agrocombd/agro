@@ -7,7 +7,8 @@ export const metadata = { title: "অ্যাডমিন ড্যাশবো
 export const revalidate = 60;
 
 export default async function AdminDashboard() {
-  const supabase = createAdminClient();
+  let supabase;
+  try { supabase = createAdminClient(); } catch { supabase = null; }
 
   const [
     { count: totalOrders },

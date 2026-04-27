@@ -3,7 +3,8 @@ import { notFound } from "next/navigation";
 import ProductDetailClient from "./ProductDetailClient";
 
 export async function generateMetadata({ params }) {
-  const supabase = createAdminClient();
+  let supabase;
+  try { supabase = createAdminClient(); } catch { supabase = null; }
   const { data: product } = await supabase
     .from("products")
     .select("name_bn,name_en,description_bn,images")
@@ -24,7 +25,8 @@ export async function generateMetadata({ params }) {
 export const revalidate = 60;
 
 export default async function ProductPage({ params }) {
-  const supabase = createAdminClient();
+  let supabase;
+  try { supabase = createAdminClient(); } catch { supabase = null; }
 
   const [{ data: product }, { data: reviews }] = await Promise.all([
     supabase

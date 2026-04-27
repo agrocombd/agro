@@ -22,7 +22,8 @@ export default async function OrderDetailPage({ params }) {
   const { id } = await params;
   const supabase = await createServerSupabaseClient();
   const { data: { user } } = await supabase.auth.getUser();
-  const admin = createAdminClient();
+  let admin;
+  try { admin = createAdminClient(); } catch { admin = null; }
 
   const { data: order } = await admin
     .from("orders")

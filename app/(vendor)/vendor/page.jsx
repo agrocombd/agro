@@ -11,7 +11,8 @@ const STATUS_COLORS = { pending: "bg-amber-100 text-amber-700", confirmed: "bg-b
 export default async function VendorDashboard() {
   const supabase = await createServerSupabaseClient();
   const { data: { user } } = await supabase.auth.getUser();
-  const adminSupabase = createAdminClient();
+  let adminSupabase;
+  try { adminSupabase = createAdminClient(); } catch { adminSupabase = null; }
 
   const [{ data: vendorProfile }, { data: products }, { data: recentOrders }] = await Promise.all([
     adminSupabase.from("vendor_profiles").select("business_name,is_approved,is_verified").eq("user_id", user.id).single(),

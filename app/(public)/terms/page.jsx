@@ -3,7 +3,8 @@ export const metadata = { title: "শর্তাবলী — Agro.com.bd" };
 export const revalidate = 3600;
 
 export default async function TermsPage() {
-  const supabase = createAdminClient();
+  let supabase;
+  try { supabase = createAdminClient(); } catch { supabase = null; }
   const { data: page } = await supabase.from("pages").select("content_bn").eq("slug", "terms").single();
   return (
     <div className="container-app py-10 max-w-3xl">

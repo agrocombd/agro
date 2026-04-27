@@ -5,7 +5,8 @@ export const metadata = { title: "AI পরিসংখ্যান — অ্�
 export const revalidate = 300;
 
 export default async function AIStatsPage() {
-  const supabase = createAdminClient();
+  let supabase;
+  try { supabase = createAdminClient(); } catch { supabase = null; }
 
   const [
     { count: totalCached },

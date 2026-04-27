@@ -3,7 +3,8 @@ import { notFound } from "next/navigation";
 import ForumPostClient from "./ForumPostClient";
 
 export async function generateMetadata({ params }) {
-  const supabase = createAdminClient();
+  let supabase;
+  try { supabase = createAdminClient(); } catch { supabase = null; }
   const { data } = await supabase.from("forum_posts").select("title").eq("id", params.id).single();
   return { title: data?.title ? `${data.title} — ফোরাম` : "পোস্ট" };
 }
@@ -11,7 +12,8 @@ export async function generateMetadata({ params }) {
 export const revalidate = 30;
 
 export default async function ForumPostPage({ params }) {
-  const supabase = createAdminClient();
+  let supabase;
+  try { supabase = createAdminClient(); } catch { supabase = null; }
 
   // Increment view count
   await supabase.rpc("increment_post_view", { post_id: params.id }).catch(() => {});

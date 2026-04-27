@@ -6,7 +6,8 @@ import { createAdminClient } from "@/lib/supabase-server";
 export const revalidate = 60;
 
 export async function generateMetadata({ params }) {
-  const supabase = createAdminClient();
+  let supabase;
+  try { supabase = createAdminClient(); } catch { supabase = null; }
   const { data } = await supabase.from("blog_posts").select("title, excerpt, cover_image").eq("slug", params.slug).single();
   if (!data) return { title: "পোস্ট পাওয়া যায়নি" };
   return {
@@ -17,7 +18,8 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function BlogPostPage({ params }) {
-  const supabase = createAdminClient();
+  let supabase;
+  try { supabase = createAdminClient(); } catch { supabase = null; }
   const { data: post } = await supabase
     .from("blog_posts")
     .select("*")
