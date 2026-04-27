@@ -20,7 +20,7 @@ const STATUS_BN = {
 const PAY_BN = { pending: "অপেক্ষারত", paid: "পরিশোধিত", failed: "ব্যর্থ", refunded: "ফেরত" };
 
 export default async function OrdersPage() {
-  const supabase = createServerSupabaseClient();
+  const supabase = await createServerSupabaseClient();
   const { data: { user } } = await supabase.auth.getUser();
   const adminSupabase = createAdminClient();
 

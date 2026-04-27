@@ -9,7 +9,7 @@ const STATUS_BN = { pending: "অপেক্ষারত", confirmed: "নি�
 const STATUS_COLORS = { pending: "bg-amber-100 text-amber-700", confirmed: "bg-blue-100 text-blue-700", delivered: "bg-green-100 text-green-700", cancelled: "bg-red-100 text-red-500" };
 
 export default async function VendorDashboard() {
-  const supabase = createServerSupabaseClient();
+  const supabase = await createServerSupabaseClient();
   const { data: { user } } = await supabase.auth.getUser();
   const adminSupabase = createAdminClient();
 

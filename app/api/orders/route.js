@@ -28,7 +28,7 @@ export async function POST(request) {
   }
 
   // Get authenticated user (optional — guest orders allowed)
-  const userSupabase = createServerSupabaseClient();
+  const userSupabase = await createServerSupabaseClient();
   const { data: { user } } = await userSupabase.auth.getUser();
 
   // Calculate totals
@@ -85,7 +85,7 @@ export async function POST(request) {
 }
 
 export async function GET(request) {
-  const supabase = createServerSupabaseClient();
+  const supabase = await createServerSupabaseClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return NextResponse.json({ error: "অনুমতি নেই" }, { status: 401 });
 

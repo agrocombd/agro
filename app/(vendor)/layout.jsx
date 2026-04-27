@@ -8,7 +8,7 @@ import { ToastProvider } from "@/components/ui/Toast";
 import DashboardSidebar from "@/components/layout/DashboardSidebar";
 
 export default async function VendorLayout({ children }) {
-  const supabase = createServerSupabaseClient();
+  const supabase = await createServerSupabaseClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect("/login");
 
