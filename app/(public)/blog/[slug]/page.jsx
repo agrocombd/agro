@@ -6,9 +6,9 @@ import { createAdminClient } from "@/lib/supabase-server";
 export const revalidate = 60;
 
 export async function generateMetadata({ params }) {
-  let supabase;
-  try { supabase = createAdminClient(); } catch { supabase = null; }
-  const { data } = await supabase.from("blog_posts").select("title, excerpt, cover_image").eq("slug", params.slug).single();
+  const { slug } = await params;
+  const supabase = createAdminClient();
+  const { data } = await supabase.from("blog_posts").select("title, excerpt, cover_image").eq("slug", slug).single();
   if (!data) return { title: "পোস্ট পাওয়া যায়নি" };
   return {
     title: `${data.title} — agro.com.bd ব্লগ`,
@@ -18,12 +18,12 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function BlogPostPage({ params }) {
-  let supabase;
-  try { supabase = createAdminClient(); } catch { supabase = null; }
+  const { slug } = await params;
+  const supabase = createAdminClient();
   const { data: post } = await supabase
     .from("blog_posts")
     .select("*")
-    .eq("slug", params.slug)
+    .eq("slug", slug)
     .eq("is_published", true)
     .single();
 

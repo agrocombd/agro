@@ -3,12 +3,12 @@ import { notFound } from "next/navigation";
 import ProductDetailClient from "./ProductDetailClient";
 
 export async function generateMetadata({ params }) {
-  let supabase;
-  try { supabase = createAdminClient(); } catch { supabase = null; }
+  const { id } = await params;
+  const supabase = createAdminClient();
   const { data: product } = await supabase
     .from("products")
     .select("name_bn,name_en,description_bn,images")
-    .eq("id", params.id)
+    .eq("id", id)
     .single();
 
   if (!product) return { title: "পণ্য পাওয়া যায়নি" };
@@ -25,8 +25,8 @@ export async function generateMetadata({ params }) {
 export const revalidate = 60;
 
 export default async function ProductPage({ params }) {
-  let supabase;
-  try { supabase = createAdminClient(); } catch { supabase = null; }
+  const { id } = await params;
+  const supabase = createAdminClient();
 
   const [{ data: product }, { data: reviews }] = await Promise.all([
     supabase
@@ -34,14 +34,14 @@ export default async function ProductPage({ params }) {
       .select(
         "*, categories(id,name_bn,slug,is_perishable), vendor_profiles(business_name, is_verified)"
       )
-      .eq("id", params.id)
+      .eq("id", id)
       .eq("is_active", true)
       .eq("is_approved", true)
       .single(),
     supabase
       .from("reviews")
       .select("id,rating,comment,created_at,profiles(full_name,avatar_url)")
-      .eq("product_id", params.id)
+      .eq("product_id", id)
       .eq("is_approved", true)
       .order("created_at", { ascending: false })
       .limit(10),

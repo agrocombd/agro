@@ -11,8 +11,7 @@ export const metadata = {
 export const revalidate = 30;
 
 async function getInitialData(searchParams) {
-  let supabase;
-  try { supabase = createAdminClient(); } catch { supabase = null; }
+  const supabase = createAdminClient();
   const category = searchParams?.category;
   const featured = searchParams?.featured === "true";
   const q = searchParams?.q;

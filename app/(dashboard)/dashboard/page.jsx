@@ -21,8 +21,8 @@ const STATUS_BN = {
 export default async function DashboardPage() {
   const supabase = await createServerSupabaseClient();
   const { data: { user } } = await supabase.auth.getUser();
-  let adminSupabase;
-  try { adminSupabase = createAdminClient(); } catch { adminSupabase = null; }
+  if (!user) return null;
+  const adminSupabase = createAdminClient();
 
   const [{ data: profile }, { data: orders }] = await Promise.all([
     adminSupabase.from("profiles").select("full_name,avatar_url,created_at").eq("id", user.id).single(),

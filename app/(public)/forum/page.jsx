@@ -11,8 +11,7 @@ export const metadata = {
 export const revalidate = 60;
 
 async function getForumData() {
-  let supabase;
-  try { supabase = createAdminClient(); } catch { supabase = null; }
+  const supabase = createAdminClient();
   const [catsRes, postsRes, noticesRes] = await Promise.all([
     supabase.from("forum_categories").select("id,name_bn,slug,icon,description_bn,post_count").eq("is_active", true).order("sort_order"),
     supabase

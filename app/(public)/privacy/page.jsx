@@ -3,8 +3,7 @@ export const metadata = { title: "গোপনীয়তা নীতি — A
 export const revalidate = 3600;
 
 export default async function PrivacyPage() {
-  let supabase;
-  try { supabase = createAdminClient(); } catch { supabase = null; }
+  const supabase = createAdminClient();
   const { data: page } = await supabase.from("pages").select("content_bn").eq("slug", "privacy").single();
   return (
     <div className="container-app py-10 max-w-3xl">

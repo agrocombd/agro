@@ -8,8 +8,7 @@ export const metadata = {
 export const revalidate = 3600;
 
 export default async function AboutPage() {
-  let supabase;
-  try { supabase = createAdminClient(); } catch { supabase = null; }
+  const supabase = createAdminClient();
   const { data: page } = await supabase.from("pages").select("content_bn,content_en").eq("slug", "about").single();
 
   return (

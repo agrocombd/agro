@@ -22,8 +22,8 @@ const PAY_BN = { pending: "অপেক্ষারত", paid: "পরিশো�
 export default async function OrdersPage() {
   const supabase = await createServerSupabaseClient();
   const { data: { user } } = await supabase.auth.getUser();
-  let adminSupabase;
-  try { adminSupabase = createAdminClient(); } catch { adminSupabase = null; }
+  if (!user) return null;
+  const adminSupabase = createAdminClient();
 
   const { data: orders } = await adminSupabase
     .from("orders")

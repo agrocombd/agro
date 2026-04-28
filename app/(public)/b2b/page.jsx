@@ -11,8 +11,7 @@ export const metadata = {
 export const revalidate = 30;
 
 async function getB2BData(searchParams) {
-  let supabase;
-  try { supabase = createAdminClient(); } catch { supabase = null; }
+  const supabase = createAdminClient();
   const category = searchParams?.category;
   const q = searchParams?.q;
 

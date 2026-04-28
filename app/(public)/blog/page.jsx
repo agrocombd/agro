@@ -11,8 +11,7 @@ export const metadata = {
 
 async function getPosts() {
   try {
-    let supabase;
-    try { supabase = createAdminClient(); } catch { supabase = null; }
+    const supabase = createAdminClient();
     const { data } = await supabase
       .from("blog_posts")
       .select("id, title, slug, excerpt, cover_image, category, published_at, author_name")
